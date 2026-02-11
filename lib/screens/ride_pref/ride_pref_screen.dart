@@ -28,14 +28,16 @@ class _RidePrefScreenState extends State<RidePrefScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        // 1 - Background  Image
-        _buildBackground(),
+    return Scaffold(
+      body: Stack(
+        children: [
+          // 1 - Background  Image
+          _buildBackground(),
 
-        // 2 - Foreground content
-        _buildForeground(),
-      ],
+          // 2 - Foreground content
+          _buildForeground(),
+        ],
+      ),
     );
   }
 
