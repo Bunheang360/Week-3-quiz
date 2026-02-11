@@ -9,6 +9,7 @@ import '../../../utils/date_time_util.dart';
 import '../../../widgets/display/bla_divider.dart';
 import '../../../widgets/inputs/bla_location_picker.dart';
 import './ride_pref_tile.dart';
+import '../../ride/ride_screen.dart';
 
 ///
 /// A Ride Preference From is a view to select:
@@ -64,7 +65,8 @@ class _RidePrefFormState extends State<RidePrefForm> {
   void onDeparture() async {
     //Select location
     Location? selectLocation = await Navigator.of(context).push<Location>(
-      MaterialPageRoute(builder: (context) => BlaLocationPicker()),
+      MaterialPageRoute(builder: (context) => BlaLocationPicker(
+      )),
     );
     //Rebuild if user select location
     if (selectLocation != null) {
@@ -77,7 +79,8 @@ class _RidePrefFormState extends State<RidePrefForm> {
   void onArrival() async {
     //Select location
     Location? selectLocation = await Navigator.of(context).push<Location>(
-      MaterialPageRoute(builder: (context) => BlaLocationPicker()),
+      MaterialPageRoute(builder: (context) => BlaLocationPicker(
+      )),
     );
     //Rebuild if user select location
     if (selectLocation != null) {
@@ -90,7 +93,7 @@ class _RidePrefFormState extends State<RidePrefForm> {
   void switchLocations() {
     setState(() {
       // For switching location if both departure and arrival are not null
-      if (departure == null && arrival == null) {
+      if (departure != null && arrival != null) {
         final temp = departure!;
         departure = arrival;
         arrival = temp;
@@ -167,7 +170,7 @@ class _RidePrefFormState extends State<RidePrefForm> {
                 type: ButtonType.primary,
                 onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute (
-                    builder: (context) => BlaLocationPicker(),
+                    builder: (context) => RideScreen(),
                   )
                 )
               )
